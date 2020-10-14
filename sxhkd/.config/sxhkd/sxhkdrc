@@ -1,0 +1,87 @@
+#Brightness_Control
+XF86MonBrightnessDown
+    brightnessctl s 5%-
+XF86MonBrightnessUp
+    brightnessctl s +5%
+
+#Volume_Control
+XF86AudioRaiseVolume
+    pulseaudio-ctl set +5% 
+XF86AudioLowerVolume
+    pulseaudio-ctl down -5% 
+XF86AudioMute
+    pulseaudio-ctl mute
+
+
+#Power_Menu
+alt + space
+    betterlockscreen --lock
+super + alt + l
+    $HOME/.config/scripts/exit.sh logout
+super + alt + r
+    $HOME/.config/scripts/exit.sh reboot
+super + alt + s
+    $HOME/.config/scripts/exit.sh shutdown
+
+alt + d
+    $HOME/.config/scripts/vid.sh
+
+
+
+
+#youtube-dl
+super + shift + d
+    alacritty -e $HOME/.config/scripts/ytdl.sh
+super + ctrl + d
+   alacritty  -e $HOME/.config/scripts/ytdl-pl.sh
+
+#Pavucontrol
+super + ctrl + m
+    pavucontrol
+
+
+#Dmenu
+super + d
+    dmenu_run
+
+#Dmenu
+super + space 
+    $HOME/.config/scripts/web.sh
+
+#Terminal
+super + Return
+    alacritty	
+
+#Casual_WebBrowser 
+super + b
+    firefox --private-window
+
+#WebBrowser_Study 
+alt + b
+    waterfox
+
+
+#WebBrowser_Messenger
+super + s
+    chromium --app=https://messenger.com
+
+
+
+#Thunar 1
+super + f
+    thunar /SPT/
+
+#Thunar 2
+super + shift + f
+    thunar
+
+#Text_Editor
+super + c
+	subl
+
+#Pass
+super + p
+	passmenu
+#Gcomp
+#super + a
+#    gcompris-qt

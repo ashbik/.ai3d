@@ -1,0 +1,350 @@
+#mod key
+set $mod Mod4
+
+# Font for window titles. 
+font pango:Nerd Regular 11
+#Windows  border
+new_window pixel 5
+
+#Color
+# class                 border  backgr. text    indicator child_border
+client.focused          #7a2b24 #1d2d47 #ffffff #000000   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+########################################################################################################################
+############################################ Startup apps and services #################################################
+########################################################################################################################
+
+#exec xset -b
+#exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec_always --no-startup-id wal -R
+#exec_always --no-startup-id xrdb $HOME/.Xresources
+#exec_always --no-startup-id $HOME/.config/i3/quiet-toogle-bar.py
+exec --no-startup-id nm-applet
+
+#exec --no-startup-id mpd
+#exec --no-startup-id compton
+#exec --no-startup-id megasync
+#exec --no-startup-id volumeicon
+#exec_always --no-startup-id picom --config ~/.config/picom.conf
+#exec --no-startup-id redshift -c ~/.config/redshift.conf
+#exec --no-startup-id cbatticon -i symbolic
+
+#change long press rate
+#exec xset r rate   300 50
+########################################################################################################################
+############################################ Assign Workspace for Apps #################################################
+########################################################################################################################
+
+
+assign [class="Vivaldi-stable"] $ws6
+assign [class="code-oss"] $ws8
+assign [class="firefox"] $ws7
+assign [class="qBittorrent"] $ws10
+assign [instance="coursera.org"] $ws9
+assign [instance="messenger.com"] $ws1
+assign [title="Jellyfin"] $ws3
+#assign [class="Surf"] $ws1
+
+for_window[title="Messenger call"] floating enable
+for_window[class="VirtualBox Machine"] floating enable
+for_window[class="mpv"] floating enable
+for_window[class="Sxiv"] floating enable
+#for_window[class="St"] floating enable
+for_window[class="Caprine"] floating enable move absolute position 120 px 120px
+#for_window[class="Thunar"] floating enable move absolute position 0 px 0px
+assign [instance="youtube-s"] $ws10
+for_window[instance="youtube-s"] floating enable move absolute position 20px 20px
+
+#########################################################################################################################                 
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+bindsym $mod+Ctrl+Return move scratchpad
+bindsym $mod+Shift+Return scratchpad show
+
+
+# Close all windows on workspace 1 (name stored in $ws1)
+bindsym $mod+Shift+s [workspace=$ws1] kill
+
+# kill Window
+bindsym $mod+Shift+q kill
+#bindsym $mod+Ctrl+q exec xkill | urxvt
+
+
+
+# start dmenu (a program launcher)
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+
+
+
+
+
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+#font pango:monospace 11
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+semicolon split h
+
+# split in vertical orientation
+bindsym $mod+semicolon split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+q fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+w layout toggle split
+bindsym $mod+Shift+w layout stacking
+bindsym $mod+ctrl+w layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5:ﱮ "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9:📖 "
+set $ws10 "0:📥 "
+
+# switch to workspace
+bindsym $mod+1 workspace  $ws1
+bindsym $mod+2 workspace  $ws2
+bindsym $mod+3 workspace  $ws3
+bindsym $mod+4 workspace  $ws4
+bindsym $mod+5 workspace  $ws5
+bindsym $mod+6 workspace  $ws6
+bindsym $mod+7 workspace  $ws7
+bindsym $mod+8 workspace  $ws8
+bindsym $mod+9 workspace  $ws9
+bindsym $mod+0 workspace  $ws10
+
+# move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace  $ws1
+bindsym $mod+Ctrl+2 move container to workspace  $ws2
+bindsym $mod+Ctrl+3 move container to workspace  $ws3
+bindsym $mod+Ctrl+4 move container to workspace  $ws4
+bindsym $mod+Ctrl+5 move container to workspace  $ws5
+bindsym $mod+Ctrl+6 move container to workspace  $ws6
+bindsym $mod+Ctrl+7 move container to workspace  $ws7
+bindsym $mod+Ctrl+8 move container to workspace  $ws8
+bindsym $mod+Ctrl+9 move container to workspace  $ws9
+bindsym $mod+Ctrl+0 move container to workspace  $ws10
+
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+
+
+# resize window (you can also use the mouse for that)
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+set $border "#7A2B24"
+set $bgcolor "#000000"
+bar {
+        colors {
+        background $bgcolor
+        statusline #2f343f
+        separator #4b5262
+
+                            #  border,      background,       and text
+        focused_workspace     $border        $bgcolor        #d8dee8
+        active_workspace      $border        $bgcolor       #d8dee8
+        inactive_workspace    $bgcolor        #6a6891     #d8dee8
+        urgent_workspace     $border         #ebcb8b         #2f343f
+    }                            
+        status_command i3blocks -c /home/at/.config/i3blocks/config
+        position top
+       # tray_output none
+}
+
+########## Styling ##########
+
+
+
+########## i3-gaps integration ##########
+
+for_window [class="^.*"] border pixel 2
+#for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+
+##################################################
+
+
+
+
+# Disable window titlebars entirely
+for_window [class="^.*"] border pixel 2
+
+# Set inner/outer gaps
+#gaps inner 10
+#gaps outer 15
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+#set $mode_gaps Gaps: (o) outer, (i) inner
+#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+#-------------------------------------------------------------------------------------------------------------------#
+#                                          how to exit, logoff, suspend, ...                                        # 
+#-------------------------------------------------------------------------------------------------------------------#
+
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+#Press $mod (super) and X to exit - check toolbar for next choices
+bindsym $mod+X mode "$mode_system"
+bindsym control+mod1+Delete mode "$mode_system"
+
+set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+

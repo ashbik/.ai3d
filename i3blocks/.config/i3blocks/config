@@ -1,0 +1,113 @@
+# sbs configuration file
+#
+# The sbs man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/sbs
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/sbs
+#command=xdg-open "$website"
+#color=#f12711
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+[cpu_usage]
+color=#F67E7D
+command=$HOME/.config/scripts/sbs/cpu_usage
+markup=pango
+interval=persist
+#min_width=CPU 100.00%
+#REFRESH_TIME=1
+LABEL=
+WARN_PERCENT=50
+CRIT_PERCENT=80
+#DECIMALS=2
+
+[temperature]
+color=#D1345B
+command=$HOME/.config/scripts/sbs/temprature.sh
+label=🌡️ 
+interval=10
+T_WARN=70
+T_CRIT=90
+#SENSOR_CHIP=""
+
+[battery]
+color=#FFE8D1
+command=$HOME/.config/scripts/sbs/battery.py
+markup=pango
+interval=10
+
+
+
+
+[volume]
+color=#34D1BF
+command=$HOME/.config/scripts/sbs/vol.sh
+interval=1
+
+[ssid]
+color=#60D394
+command=$HOME/.config/scripts/sbs/ssid.sh
+label= 
+interval=60
+
+[bandwidth]
+color=#60D394
+command=$HOME/.config/scripts/sbs/bandwidth.sh
+interval=5
+INTERFACE=wlo1
+INLABEL=  
+OUTLABEL=/ 
+#TREAT_UNKNOWN_AS_UP=0
+
+[arch-update]
+command=$HOME/.config/scripts/sbs/archu.py
+markup=pango
+interval= 3600
+QUIET=true
+WATCH=^linux.* ^pacman.*
+BASE_COLOR=#5fff5f
+UPDATE_COLOR=#FFFF85
+AUR=true
+LABEL= 
+
+
+
+[weather]
+command=$HOME/.config/scripts/sbs/weather.sh
+instance=2643743
+interval=60
+
+
+[date]
+color=#FFFFFF
+command=date "+📆 %A_%d-%b"
+interval=1
+
+[timenepal]
+color=#FFFFFF
+command=date "+🇳🇵%R"
+interval=1
+
+[timemanila]
+color=#FFFFFF
+command=TZ='Asia/Manila' date "+🇵🇭 %R"
+interval=1
+
+[timerhodeisland]
+color=#FFFFFF
+command=TZ='America/New_York' date "+🇺🇸 %R"
+interval=1
+
+
